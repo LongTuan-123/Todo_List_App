@@ -9,13 +9,9 @@ import { TaskCategory } from '../components/task-category';
 import { DateSelector } from '../components/date-selector';
 import { TaskForm } from '../components/task-form';
 import { generateNext7Days } from '../ultils';
-import { Task } from '../type';
+import { GroupedByDate, Task } from '../type';
 import { mockTasks } from '../mock';
-
-type GroupedByDate = {
-  date: string;
-  [category: string]: Task[] | string;
-};
+import { toast } from 'react-toastify';
 
 export const TodoPageTemplate = () => {
   const dates = useMemo(() => generateNext7Days(), []);
@@ -144,7 +140,7 @@ export const TodoPageTemplate = () => {
 
         return updated;
       });
-
+      toast('Added new task successfully!', { type: 'success' });
       setSelectedDate(date);
     },
     []
