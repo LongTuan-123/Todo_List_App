@@ -16,3 +16,8 @@ export interface GroupedTask {
   date: string;
   categories: Record<string, TaskDetail[]>;
 }
+
+export type GroupedByDate = {
+  date: string;
+  [category: string]: Task[] | string;
+};
